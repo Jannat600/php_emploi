@@ -7,7 +7,7 @@ use Entity\Jour;
 use Repository\EmploiRepository;
 
 
-class PersonneController
+class EmploiController
 {
     private static $pdo;
 
@@ -24,13 +24,23 @@ class PersonneController
         var_dump($emplois);
 
     }
-    public function storeEmploi($_REQUEST)
-    {     $e = new Emploi();
-         $e->setIntitule($intitule);
-         $e->setHoraires($horaires);
-         $e->setJour($jour);
-         $e->setDate_ex($date_ex);
+    public function storeEmploi($request)
+
+    {    
+        $e = new Emploi();
+         $e->setIntitule($request['intitule']);
+         $e->setHoraires($request['horaires']);
+         $e->setJour($request['jour']);
+         $e->setDate_ex($request['date_ex']);
+         $e->setId_filiere($request['id_filiere']);
+         $e->setId_user($request['id_user']);
          $empRepo = new EmploiRepository();
-        $empRepo->ajouterEmploi($e);
+         if (isset($request))
+         {
+            $empRepo->ajouterEmploi($e);
         }
+
+            $empRepo->modifierEmploi($e);
+
+    }
 }

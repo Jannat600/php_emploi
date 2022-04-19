@@ -40,19 +40,18 @@ class EmploiRepository
     public function ajouterEmploi(Emploi $emploi)
     {
         try {
-            $stmt = $this->pdo->prepare("insert into emploi values(DEFAULT,".$emploi->getIntitule()."','".$emploi->getDate_ex()."','".$emploi->getId_user()."','" .$emploi->getId_filiere().")");
+            $query = "insert into emploi (intitule,date_ex,id_user,id_filiere ) values('".$emploi->getIntitule()."','".$emploi->getDate_ex()."',".$emploi->getId_user().",".$emploi->getId_filiere().")";
+            $stmt = $this->pdo->prepare($query);
             $stmt->execute();
-            $emplois = $stmt->fetchAll(PDO::FETCH_CLASS, 'Entity\Emploi');
-            return $emplois;
+            //$emplois = $stmt->fetchAll(PDO::FETCH_CLASS, 'Entity\Emploi');
+            //return $emplois;
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
     }
-    public function storeEmploi($request)
+    public function modifierEmploi($request)
     { 
-        
-        try {
-            
+        try { 
             $sql = "UPDATE emploi SET intitule=?, date_ex=?, id_user =? ,id_filiere=? WHERE id=?";
             $stmt = $this->pdo->prepare($sql);
             $intitule=$request->intitule;

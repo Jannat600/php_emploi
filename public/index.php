@@ -2,23 +2,37 @@
 require '../vendor/autoload.php';
 use Entity\Horaire;
 use Entity\Emploi;
+use Controller\EmploiController;
 use Repository\UserRepository;
 use Repository\EmploiRepository;
 use src\Connexion;
 
 
 try{
-    $tab = new Emploi();
-    $tab->setIntitule('GE4');
-    $tab->setId_user(2);
-    $tab->setDate_ex("2022-05-24");
-    $tab->setId_filiere(2);
-    $test=$tab->getIntitule();
-
-  
-   // $repo= new EmploiRepository();
-   // $object = $repo->ajouterEmploi($tab);
-    var_dump($test);
+    //$t = new Emploi();
+   // $t->setIntitule('GE6');
+     //$t->setId_user(5);
+    //$t->setDate_ex("2042-09-27");
+   // $t->setId_filiere(1);
+    //echo $t->getIntitule()."<br/>";
+    //echo $t->getDate_ex()."<br/>";
+    //echo  $t->getId_user()."<br/>";
+   // echo  $t->getId_filiere()."<br/>";
+   $t=array(
+    "intitule"  =>"GEINHO",
+    "date_ex "=> "2042-09-27",
+    "id_filiere" =>2,
+    "id_user" =>3,
+    "horaires"=>[],
+    "jour"=>[]
+   );
+   foreach($t as $key => $value) {
+    echo "Clé=" . $key . ", Valeur=" . $value;
+    echo "<br>";
+  }
+    $repo= new EmploiController();
+    $repo->storeEmploi($t);
+    var_dump($t);echo "<br>";
     
 }
 catch(PDOException $e){
