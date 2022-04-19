@@ -1,0 +1,24 @@
+{
+    "name": "hp/php_emploi",
+    "description": "Generateur emplois du temps universitaires",
+    "license": "upf2022",
+    "autoload": {
+        "psr-4": {
+            "src\\": "src/",
+             "Entity\\": "app/Entity/",
+            "Repository\\": "app/Repository/",
+            "Controller\\": "app/Controller/",
+            "View\\": "app/View/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jannat600",
+            "email": "81832036+Jannat600@users.noreply.github.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    }
+}
