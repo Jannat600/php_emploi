@@ -1,12 +1,12 @@
 <?php
 namespace Entity;
 
-class Seance {
+class Seance  extends Model{
     private $id;
     private $intitule;
     private $id_horaire;
     private $id_jour;
-    private $id_upfien;
+    private $id_prof;
     private $id_salle;
     private $id_module;
 
@@ -17,6 +17,7 @@ class Seance {
     public function getId()
     {
         return $this->id;
+        
     }
 
     /**
@@ -98,21 +99,21 @@ class Seance {
     }
 
     /**
-     * Get the value of id_upfien
+     * Get the value of id_prof
      */ 
-    public function getId_upfien()
+    public function getId_prof()
     {
-        return $this->id_upfien;
+        return $this->id_prof;
     }
 
     /**
-     * Set the value of id_upfien
+     * Set the value of id_prof
      *
      * @return  self
      */ 
-    public function setId_upfien($id_upfien)
+    public function setId_prof($id_prof)
     {
-        $this->id_upfien = $id_upfien;
+        $this->id_upfien = $id_prof;
 
         return $this;
     }
@@ -157,14 +158,14 @@ class Seance {
         return $this;
     }
    
-    function __construct(  $intitule,  $id_horaire,  $id_jour,  $id_module,  $id_upfien,  $id_salle ) {
+    function __construct( ) {
     
-        $this->intitule = $intitule;
-        $this->id_horaire = $id_horaire;
-        $this->id_jour = $id_jour;
-        $this->id_module = $id_module;
-        $this->id_upfien = $id_upfien;
-        $this->id_salle = $id_salle;
+        $this->table = 'seance';
+        
+    }
+    public function getproperty()
+    {
+        return get_object_vars($this);
     }
 }
 

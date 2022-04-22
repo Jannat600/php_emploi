@@ -1,7 +1,7 @@
 <?php
 namespace Entity;
 
-class User extends Upfien  {
+class User extends Model {
     private $id;
     private $username;
     private $password;
@@ -11,10 +11,12 @@ class User extends Upfien  {
 
     function __construct()
     {
-        parent::__construct();
-     
+        $this->table = 'user';
     }
-    
+    public function getproperty()
+    {
+        return get_object_vars($this);
+    }
 
     /**
      * Get the value of id
@@ -117,4 +119,24 @@ class User extends Upfien  {
         return $this;
     }
    
+
+    /**
+     * Get the value of email
+     */ 
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    /**
+     * Set the value of email
+     *
+     * @return  self
+     */ 
+    public function setEmail($email)
+    {
+        $this->email = $email;
+
+        return $this;
+    }
 }

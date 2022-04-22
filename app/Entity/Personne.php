@@ -1,7 +1,7 @@
 <?php
 namespace Entity;
 
-class Personne {
+class Personne extends Model {
     protected $id;
     protected $nom;
     protected $prenom;

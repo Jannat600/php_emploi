@@ -1,7 +1,7 @@
 <?php
 namespace Entity;
 
-class Filiere {
+class Filiere extends Model {
     private $id;
     private $nom_filiere;
     private $niveau;
@@ -12,8 +12,12 @@ class Filiere {
         $this->nom_filiere=$nom_fil;
          $this->niveau=$niv;
          $this->modules=$mod;
+         $this->table = 'filiere';
         }
-
+        public function getproperty()
+        {
+            return get_object_vars($this);
+        }
 
     /**
      * Get the value of id

@@ -1,23 +1,24 @@
 [  
     {
-        "action": "Personne",
-        "Controller":"PersonneController::showPersonne"
+        "action": "/",
+        "Controller":"UserController::ViewHandler       "
+    
+    },
+    {
+        "action": "Login",
+        "Controller":"UserController::Login"
     
     },
     
     {
-        "action": "Personnes",
-        "Controller":"PersonneController::showPersonnes"
+        "action": "Register",
+        "Controller":"UserController::Register"
     
     },
     {
-        "action": "addPersonne",
-        "Controller":"PersonneController::ajouterPersonne"
-    
-    },
-    {
-        "action": "index",
-        "Controller":"AccueilController::index"
+        "action": "ViewLogin",
+        "Controller":"UserController::ViewHandler"
     
     }
+    
 ]

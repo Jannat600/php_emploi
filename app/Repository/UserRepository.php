@@ -7,7 +7,7 @@ use PDO;
 use Entity\User;
 use PDOException;
 
-class UserRepository{
+class UserRepository extends Repository{
 
     protected $pdo;
 
@@ -17,51 +17,50 @@ class UserRepository{
     
     }
 
-    public function find($id){
+    public function findByEmailOrUserName($input){
         
     
-    $stmt=$this->pdo->prepare("select * from user where id=:id");
-    $stmt->execute([':id'=>$id]);
-    $personnes=$stmt->fetchAll(PDO::FETCH_CLASS,'Entity\User');
-    return $personnes;
+        $q = "select * from user WHERE username= '". $input."' OR email= '". $input."'";
+        $p= $this->requete($q)->fetch();
+        return $p;
     }
 
-    public function findAll(){
+    // public function findAll(){
         
     
-        $stmt=$this->pdo->prepare("select * from user");
-        $stmt->execute();
-        $users=$stmt->fetchAll(PDO::FETCH_CLASS,'Entity\User');
-        return $users;
-        }
+    //     $stmt=$this->pdo->prepare("select * from user");
+    //     $stmt->execute();
+    //     $users=$stmt->fetchAll(PDO::FETCH_CLASS,'Entity\User');
+    //     return $users;
+    //     }
     
-        public function ajouterUser(User $user){
-            try
-            {
-            $stmt=$this->pdo->prepare("insert into user values(DEFAULT,".$user-> getUsername()."','".$user->getPassword()."','".$user->getId_upf()."','".$user->getRole().")");
-            $stmt->execute();
-            $users=$stmt->fetchAll(PDO::FETCH_CLASS,'Entity\User');
-            return $users;
-            }
-            catch(PDOException $e){
-                echo $e->getMessage();
-            }
+    //     public function ajouterUser(User $user){
+    //         try
+    //         {
+    //         $stmt=$this->pdo->prepare("insert into user values(DEFAULT,".$user-> getUsername()."','".$user->getPassword()."','".$user->getId_upf()."','".$user->getRole().")");
+    //         $stmt->execute();
+    //         $users=$stmt->fetchAll(PDO::FETCH_CLASS,'Entity\User');
+    //         return $users;
+    //         }
+    //         catch(PDOException $e){
+    //             echo $e->getMessage();
+    //         }
         
 
-        } 
-        public function SupprimerUser(User $id){
-            try
-            {
-            $stmt=$this->pdo->prepare("delete from user  where id=:id");
-            $stmt->execute();
-            $users=$stmt->fetchAll(PDO::FETCH_CLASS,'Entity\User');
-            return $users;
-            }
-            catch(PDOException $e){
-                echo $e->getMessage();
-            }
+    //     } 
+    //     public function SupprimerUser(User $id){
+    //         try
+    //         {
+    //         $stmt=$this->pdo->prepare("delete from user  where id=:id");
+    //         $stmt->execute();
+    //         $users=$stmt->fetchAll(PDO::FETCH_CLASS,'Entity\User');
+    //         return $users;
+    //         }
+    //         catch(PDOException $e){
+    //             echo $e->getMessage();
+    //         }
         
 
-        } 
+    //     } 
 
 }

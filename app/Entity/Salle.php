@@ -1,15 +1,19 @@
 <?php
 namespace Entity;
 
-class Salle {
+class Salle extends Model {
     private $id;
     private $code;
     
 
     function __construct($code) {
         $this->nom_module=$code;
+        $this->table = 'salle';
         }
-
+        public function getproperty()
+        {
+            return get_object_vars($this);
+        }
     /**
      * Get the value of id
      */ 

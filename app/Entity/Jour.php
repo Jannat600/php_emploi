@@ -1,20 +1,22 @@
 <?php
 namespace Entity;
 
-class Jour {
+class Jour extends Model  {
     private $id;
     private $nom;
     private $id_emploi;
     private $horaires=[];
     private $seances =[];
 
-    function __construct($name, $id_emp, $hor,$seance) {
+    function __construct($name, $id_emp) {
         $this->nom=$name;
          $this->id_emploi=$id_emp;
-         $this->horaires=$hor;
-         $this->seances=$seance;
+         $this->table = 'jour';
         }
-    
+        public function getproperty()
+        {
+            return get_object_vars($this);
+        }
     /**
      * Get the value of id
      */ 

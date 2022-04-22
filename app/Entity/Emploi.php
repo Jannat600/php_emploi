@@ -2,7 +2,7 @@
 
 namespace Entity;
 
-class Emploi
+class Emploi extends Model 
 {
     protected $id;
     private $intitule;
@@ -15,6 +15,7 @@ class Emploi
 
     
     function __construct() {
+        $this->table = 'emploi';
         }
 
     /**
@@ -23,6 +24,11 @@ class Emploi
     public function getId()
     {
         return $this->id;
+    }
+
+    public function getproperty()
+    {
+        return get_object_vars($this);
     }
     /**
      * Set the value of id

@@ -1,7 +1,7 @@
 <?php
 namespace Entity;
 
-class Horaire {
+class Horaire extends Model {
     private $id;
     private $heure_debut;
     private $heure_fin;
@@ -10,7 +10,13 @@ class Horaire {
     function __construct($heure_deb, $heure_f) {
         $this->heure_fin=$heure_f;
          $this->heure_debut=$heure_deb;
+         $this->table = 'horaire';
         }
+
+        public function getproperty()
+    {
+        return get_object_vars($this);
+    }
 
     /**
      * Get the value of id

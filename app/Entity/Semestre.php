@@ -1,12 +1,15 @@
 <?php
 namespace Entity;
 
-class Semestre {
+class Semestre extends Model{
     private $id;
     private $code;
     private $id_filiere;
     
-
+    public function getproperty()
+    {
+        return get_object_vars($this);
+    }
     
 
     /**
@@ -15,6 +18,7 @@ class Semestre {
     public function getId()
     {
         return $this->id;
+
     }
 
     /**
@@ -71,5 +75,6 @@ class Semestre {
     function __construct( $code, $id_filiere){
         $this->code = $code;
         $this->id_filiere = $id_filiere;
+        $this->table = 'semestre';
     }
 }

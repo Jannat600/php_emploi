@@ -1,13 +1,18 @@
 <?php
 namespace Entity;
 
-class Upfien {
+class Upfien  extends Model{
     private $id;
     private $nom;
     private $statut;
 
     function __construct( )
     {
+        $this->table = 'upfien';
+    }
+    public function getproperty()
+    {
+        return get_object_vars($this);
     }
     /**
      * Get the value of id

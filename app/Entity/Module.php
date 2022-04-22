@@ -1,7 +1,7 @@
 <?php
 namespace Entity;
 
-class Module {
+class Module extends Model  {
     private $id;
     private $nom_module;
     private $id_filiere;
@@ -12,6 +12,11 @@ class Module {
         $this->nom_module=$name;
          $this->id_filière=$id_fil;
          $this->semestre=$sem;
+         $this->table = 'module';
+        }
+        public function getproperty()
+        {
+            return get_object_vars($this);
         }
     /**
      * Get the value of id
