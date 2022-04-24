@@ -4,8 +4,9 @@ namespace Controller;
 use Entity\Emploi;
 use Entity\Horaire;
 use Entity\Jour;
+use Entity\User;
 use Repository\Repository;
-
+use View\ViewManager;
 
 class EmploiController extends Controller
 {
@@ -14,7 +15,7 @@ class EmploiController extends Controller
     { 
         $e= new emploi();
         $Repo = new Repository();
-        return $Repo->find($e,$request);
+     return  $Repo->find($e,$request);
         
        
         
@@ -36,18 +37,43 @@ class EmploiController extends Controller
 
 
     }
-    public function createEmploi(array $request)
+    public function createEmploi()
 
-    {    
-        $e = new Emploi();
-         $e->setIntitule($request['intitule']);
-         $e->setHoraires($request['horaires']);
-         $e->setJour($request['jour']);
-         $e->setDate_ex($request['date_ex']);
-         $e->setId_filiere($request['id_filiere']);
-         $e->setId_user($request['id_user']);
+    {  
+        
+         $f= new filiereController();
+         $usr= new User();
          $empRepo = new Repository();
-       return $empRepo->create($e);
+         $e = new Emploi();
+        
+        $arr= array('nom_filiere'=>$_POST['nom_filiere'],'niveau'=>(int)$_POST['niveau'],);
+        
+        
+        $filiere= $f-> findFiliere($arr);
+    
+        $id_fil= $filiere["id"];
 
+        $intitule=$_POST['nom_filiere'];
+        $intitule .=$_POST['niveau'];
+        $user= $empRepo->findBy($usr,(array)$_POST['username']);
+        $id_user= $user["id"];
+        
+         $e->setIntitule($intitule);
+         $e->setDate_ex($_POST['date_ex']);
+         $e->setId_filiere($id_fil);
+         $e->setId_user($id_user);
+         
+            $empRepo->create($e);
+        
+         $vm= new ViewManager();
+         $vm->render("\Admin\create_table.view",['emploi'=>$e]);
+    } 
+
+    public function Delete($id)
+    {   
+        
+       $e=new Emploi();
+       $repo= new Repository();
+       return $repo->delete($e, $id);
     }
 }

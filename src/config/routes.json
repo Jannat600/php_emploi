@@ -1,9 +1,10 @@
 [  
     {
-        "action": "/",
-        "Controller":"UserController::ViewHandler       "
+        "action":"/",
+        "Controller":"AccueilController::index"
     
     },
+
     {
         "action": "Login",
         "Controller":"UserController::Login"
@@ -15,10 +16,51 @@
         "Controller":"UserController::Register"
     
     },
+
     {
-        "action": "ViewLogin",
-        "Controller":"UserController::ViewHandler"
+        "action": "Admin",
+        "Controller":"AdminController::index"
+    
+    },
+
+    {
+        "action": "create_hour",
+        "Controller":"HoraireController::createHoraire"
+    
+    },
+
+    {
+        "action": "create_table",
+        "Controller":"AdminController::create_table"
     
     }
+    ,
+
+    {
+        "action": "load_info",
+        "Controller":"SemestreController::findSemestres"
+    
+    },
+    {
+        "action": "populate_emploi",
+        "Controller":"AdminController::load_data"
+    
+    }
+
+    ,
+
+    {
+        "action": "delete_table",
+        "Controller":"EmploiController::Delete"
+    
+    },
+    {
+        "action": "init_emploi",
+        "Controller":"EmploiController::createEmploi"
+    
+    }
+    
+    
+    
     
 ]

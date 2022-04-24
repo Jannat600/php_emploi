@@ -7,9 +7,7 @@ class Horaire extends Model {
     private $heure_fin;
 
 
-    function __construct($heure_deb, $heure_f) {
-        $this->heure_fin=$heure_f;
-         $this->heure_debut=$heure_deb;
+    function __construct() {
          $this->table = 'horaire';
         }
 

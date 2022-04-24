@@ -2,36 +2,53 @@
 
 namespace Controller;
 use Entity\horaire;
-use Repository\HoraireRepository;
+use Repository\Repository;
 
 
 class HoraireController
 {
     private static $pdo;
-
-    public static function showheure()
-    {
-        $heureRepo = new HoraireRepository();
-        $heure = $heureRepo->find(1);
-        var_dump($heure);
+    public static function find($request)
+    { 
+        $e= new Horaire();
+        $Repo = new Repository();
+     return  $Repo->find($e,$request);
+        
+       
+        
     }
 
-    public  function showheures(){
-        $heureRepo = new HoraireRepository();
-    $heure2=$ $heureRepo->findAll();
-     var_dump($heure2);
+    public static function findHoraire(array $request)
+    { 
+        $e= new Horaire();
+        $Repo = new Repository();
+        $Horaire= $Repo->findBy($e, $request);
+          return $Horaire;
+        
+    }
+
+    public  function showHoraire(Horaire $e){
+     $empRepo = new Repository();
+     $Horaires = $empRepo->findAll($e);
+     return $Horaires;  
+
 
     }
-    public  function ajouterHeure($REQUEST){
-         $p =new heure();
-         
-         $p->setHeure_debut($REQUEST['heure_d']);
-         $p->setHeure_fin($REQUEST['heure_f']);
-        $heureRepo = new HoraireRepository();
-        if(isset($REQUEST)){
-        $heureRepo->ajouterheure($p);
-        }
-        $heureRepo->ModifierHeure($p);
+    public function createHoraire()
+
+    {   echo "je suis dans Horaire";
+        $e = new Horaire();
+        $input = [
+            'heure_debut' => $_POST['heure_debut'],
+            'heure_fin' => $_POST['heure_fin'],
+        ];
+        $e->setHeure_debut($input['heure_debut']);
+        $e->setHeure_fin($input['heure_fin']);
+        print_r($e);
+         $Repo = new Repository();
+        return $Repo->create($e);
+      
+
     }
 }
         

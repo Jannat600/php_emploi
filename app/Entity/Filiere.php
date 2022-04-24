@@ -8,10 +8,7 @@ class Filiere extends Model {
     private $modules=[];
  
     
-    function __construct($nom_fil, $niv,$mod) {
-        $this->nom_filiere=$nom_fil;
-         $this->niveau=$niv;
-         $this->modules=$mod;
+    function __construct() {
          $this->table = 'filiere';
         }
         public function getproperty()

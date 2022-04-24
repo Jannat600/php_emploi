@@ -6,8 +6,8 @@ class Salle extends Model {
     private $code;
     
 
-    function __construct($code) {
-        $this->nom_module=$code;
+    function __construct() {
+        
         $this->table = 'salle';
         }
         public function getproperty()

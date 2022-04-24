@@ -12,7 +12,6 @@ class Router
 
 
         if (isset($_GET["action"])) {
-            echo "je suis dans test";
             $route = $this->verifyRoute($_GET["action"] );
             if ($route != null) {
                 $this->callControllerMethode($route);

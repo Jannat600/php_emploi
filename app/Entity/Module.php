@@ -8,10 +8,7 @@ class Module extends Model  {
     private $id_semestre;
     
 
-    function __construct($name, $id_fil, $hor,$sem) {
-        $this->nom_module=$name;
-         $this->id_filière=$id_fil;
-         $this->semestre=$sem;
+    function __construct() {
          $this->table = 'module';
         }
         public function getproperty()

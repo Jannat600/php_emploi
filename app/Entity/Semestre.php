@@ -72,9 +72,7 @@ class Semestre extends Model{
 
         return $this;
     }
-    function __construct( $code, $id_filiere){
-        $this->code = $code;
-        $this->id_filiere = $id_filiere;
+    function __construct( ){
         $this->table = 'semestre';
     }
 }

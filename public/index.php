@@ -1,14 +1,16 @@
 <?php
 require '../vendor/autoload.php';
-  // use Entity\Horaire;
+  use Entity\Filiere;
   // use Entity\Emploi;
   // use Entity\Seance;
-  // use Controller\SeanceController;
+   use Controller\FiliereController;
   // use Controller\EmploiController;
   // use Controller\UserController;
   // use Repository\UserRepository;
   // use Repository\Repository;
   // use Entity\jour;
+use Entity\User;
+use Repository\Repository;
 use src\Router;
 use src\Connexion;
 
@@ -37,8 +39,8 @@ use src\Connexion;
 
   // $s =new  seance();
   // $seance= array(
-  //   "intitule"=>"Java",
-  //   "id_salle" =>2,
+  //   "nom_filiere"=>"Genie_Info",
+  //   "niveau" =>2,);
   //   "id_user"=>2,
   //   "id_prof" =>2,
   //   "id_jour"=>4,
@@ -46,16 +48,27 @@ use src\Connexion;
   //   "id_module"=>1
   //   );
   // $table = "emploi";
-  //  $repo= new SeanceController();
+  // $f= new Filiere();
+  // $repo= new FiliereController();
+  // $repos=new Repository();
+  // print_r($repo->findFiliere($seance));
   // $d =$repo->createSeance($seance);
   // print_r($d);echo "<br>";
   //   //var_dump($t);echo "<br>";
   //  // $i=get_object_vars($h);
   //  // var_dump($i);
     //var_dump($h);
+  
+    //  $usr->setUsername('username');
+    //     $usr->setPassword('password');
+    //      $usr->setId_upf(1);
+    //       $usr->setRole('Viewer');
+    //     $usr-> setEmail('email@thismail.com');
+    //     $Repo->create($usr);
+    
      $router=new Router();
      $router->request();
-    //echo "Bof";
+      //echo "Bof";
     
 // }
 // catch(PDOException $e){
